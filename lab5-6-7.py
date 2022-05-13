@@ -19,7 +19,7 @@ def tab_h(b=False):
 class Main:
     def __init__(self, var):
         self.devices = var * 3 + 10 if var < 10 else var * 2
-        self.numbers = 23 + var * 10
+        self.numbers = 235000 + var * 10000
         self.plot_recipe = self.devices_plot()
 
         # FOR 5
@@ -76,14 +76,22 @@ class Main:
                     counts_lst[self.plot_recipe.index(d_ranges)] += 1
         if check:
             print('POTENTIAL COUNTERS', counts_lst)
-            sum_lst = sum(counts_lst)
+
+            # sum_lst = sum(counts_lst)
+            # p = [counts_lst[i] / sum_lst * 100 for i in range(len(counts_lst))]
+            # diff = max(p) - min(p)
+            # print('Next analyses', diff)
+
+            sum_lst = max(counts_lst)
             p = [counts_lst[i] / sum_lst * 100 for i in range(len(counts_lst))]
             diff = max(p) - min(p)
             print('Next analyses', diff)
+
             if diff >= 5:
                 print('BAD')
                 print('numbers', sum_lst)
-                double_nums = sum_lst * 2
+                #double_nums = sum_lst * 2
+                double_nums = sum(counts_lst) * 2
                 print('double numbers', double_nums)
                 new_nums_lst = self.gen_nums(double_nums, 0, True)
                 self.nums_changing(new_nums_lst, id_)
